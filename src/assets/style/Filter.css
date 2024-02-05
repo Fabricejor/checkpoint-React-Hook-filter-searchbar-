@@ -1,0 +1,81 @@
+/* css from template + my custom */
+.justify-content-center{
+    display: flex;
+}
+.submit-button{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    
+}
+.submit-button button{
+    width: 150px;
+    height: 50px;
+    color: red;
+    border:0;
+    outline: 0;
+    font-size: 21px;
+    font-weight: 300;
+    border-radius: 20px;
+    transition: 1.5s;
+}
+.submit-button button:hover{
+    background-image: linear-gradient(to right top,#b852cd,#f19c63);
+    outline: #fff 7px solid;
+    color: #fff;
+}
+.search{
+    margin-bottom: auto;
+    margin-top: 1%;
+    margin-left:5% ;
+    height: 70px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 20px;
+    transition: 0.4s;
+
+}
+
+.search-input{
+
+    color: white;
+    border:0;
+    outline: 0;
+    background: none;
+    width: 0;
+    margin-top:5px;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+
+}
+
+.search .search-input{
+    padding: 0 10px;
+    width: 200px;
+    /* caret-color: #536bf6; */
+    font-size: 21px;
+    font-weight: 300;
+    color: black;
+    transition: width 0.4s linear;
+}
+
+.search:hover>.search-icon{
+    background-image: linear-gradient(to right top,#b852cd,#f19c63);
+    color:#fff;
+}
+.search-icon{
+
+    height: 50px;
+    width: 50px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-image: linear-gradient(to right top,#b91bd9,#eb6912);
+    border-radius: 35%;
+}
+a:link{
+    text-decoration: none;
+}
