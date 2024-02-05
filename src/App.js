@@ -18,16 +18,41 @@ const App = () => {
     { titre: 'BABY DRIVER', description: 'Course poursuite , Action , adrenaline', posterURL: 'https://aws3.vdkimg.com/film/1/3/3/8/1338851_poster_scale_480x640.jpg', note: 8 },
   ]);
 
-  const [titre , setTitre]= useState("");
-  const [note , setNote]= useState(0);
-
+  //! initialisation des donnés filtres 
+  const [titre , setTitre]= useState("");//chaine
+  const [note , setNote]= useState(0);//nombre 
+  //!!!!! Creation de nouveaux etats pour l'ajouts il ne doivent pas partager le meme noms
+  const [addtitre, setAddtitre] = useState("");//chaine
+  const [addresume, setAddresume] = useState("");
+  const [addnote , setAddnote] = useState(0);//number
+  const [addurl , setAddurl] = useState("");
+  //! fonction de filtre
   const filteredMovies = movies.filter(movie =>
-   (titre === "" || (typeof movie.titre === 'string' && movie.titre.toLowerCase().includes(titre.toLowerCase())))
- &&
+  (titre === "" || (typeof movie.titre === 'string' && movie.titre.toLowerCase().includes(titre.toLowerCase())))
+  &&
     (note === "" ||   movie.note >= parseFloat(note))
   );
   
 console.log( "note "+note , "titre : "+titre);
+    //?pour récuperer toutes les donnés du 2nd formulaire 
+    const AddMovie = () => {
+      if (addtitre !="" && addnote !=0	) {
+        const newMovie = {
+          titre: addtitre,
+          description: addresume,
+          posterURL: addurl,
+          note: parseFloat(addnote)
+        };
+        //on ajoute a la liste le tableau d'objet NewMovies avec le spread operator
+        setMovies([...movies, newMovie])
+      };
+      //! Reinitialise tous les donnéess du formulaire
+      setAddnote(0);
+      setAddtitre("");
+      setAddresume("");
+      setAddurl("");
+  };
+    
   return (
     <div className="App">
       <Navbar/>
@@ -49,6 +74,25 @@ console.log( "note "+note , "titre : "+titre);
                         </a>
                 </div>
             </div>
+
+            <div className="add-form">
+          <h2>Ajouter un nouveau film</h2>
+          <form>
+            <label>Titre:</label>
+            <input type="text" value={addtitre} onChange={(e) => setAddtitre(e.target.value)} />
+
+            <label>Description:</label>
+            <input type="text" value={addresume} onChange={(e) => setAddresume(e.target.value)} />
+
+            <label>URL du Poster (image du film):</label>
+            <input type="text" value={addurl} onChange={(e) => setAddurl(e.target.value)} />
+
+            <label>Note:</label>
+            <input type="number" value={addnote} onChange={(e) => setAddnote(e.target.value)} />
+
+            <button type="button" onClick={AddMovie}>Ajouter</button>
+          </form>
+        </div>
             <MovieList movies={filteredMovies} />
       
     </div>

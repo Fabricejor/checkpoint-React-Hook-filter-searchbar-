@@ -6,7 +6,7 @@ const Navbar = () =>{
     return(
         <>
         <div className="Container-nav" >
-            <img src="/OIG4-removebg-preview.png"  className="img" alt="" />
+            <img src="/OIG4-removebg-preview.png"  className="img" alt="logo" />
             <h2 className="title-page">GOMYFLIX</h2>
         </div>
         </>
